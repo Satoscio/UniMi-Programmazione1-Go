@@ -30,9 +30,4 @@ Programmazione 1 - Laboratorio
  10. Sottosequenze
  11. Gradino
  
- 
- 
- 
-
-
-
+* Lab 06 e Lab 07 - TUTTO!
