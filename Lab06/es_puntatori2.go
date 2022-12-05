@@ -1,26 +1,22 @@
 package main
 
-import (
-   "fmt"
-)
+import "fmt"
 
 func main() {
-   p1 := newInt1(2)
-   p2 := newInt2(6)
-   sum := *p1 + *p2
-   fmt.Println("somma:", sum)
+	p1 := newInt1(2)
+	p2 := newInt2(6)
+	sum := *p1 + *p2
+	fmt.Println("somma:", sum)
 }
 
 func newInt1(n int) *int {
-   p := new(int)
-   *p = n
-   fmt.Println(p)
-   return p
+	p := new(int)
+	*p = n
+	return p
 }
 
 func newInt2(n int) *int {
-   var temp int
-   temp = n
-   fmt.Println(&temp)
-   return &temp
+	var temp int
+	temp = n
+	return &temp
 }
