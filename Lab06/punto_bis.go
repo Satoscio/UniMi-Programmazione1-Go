@@ -16,6 +16,7 @@ func main() {
 	fmt.Println(p3)
 }
 
+// newPunto crea un nuovo punto
 func newPunto(x, y float64) Punto {
 	var p3 Punto
 	p3.x = x
@@ -23,6 +24,10 @@ func newPunto(x, y float64) Punto {
 	return p3
 }
 
+// specchiaPunto specchia rispetto all'asse Y un punto
 func specchiaPunto(p *Punto) {
+	if (*p).x == 0 {
+		return
+	}
 	(*p).x *= -1
 }
