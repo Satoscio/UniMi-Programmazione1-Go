@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	choba.Choba()
+	choba.GetChoba()
 }
