@@ -1,12 +1,12 @@
+// incompleto
+
 package main
 
 import (
-    "fmt"
-    "os"
-    "bufio"
-    "math/rand"
-    "time"
-    "strconv"
+	"bufio"
+	"math/rand"
+	"os"
+	"time"
 )
 
 func creaMarkov(s string) map[string]([]string) {

@@ -1,9 +1,11 @@
+// incompleto
+
 package main
 
 import (
-    "fmt"
-    "os"
-    "bufio"
+	"bufio"
+	"fmt"
+	"os"
 )
 
 func contaRune(s string) map[rune]int    {
