@@ -28,14 +28,14 @@ func main() {
 	for scanner.Scan() {
 		ordini = append(ordini, scanner.Text())
 	}
-	
+
 	for _, o := range ordini {
 		ord1 := strings.Split(o, "#")
 		pr, _ := strconv.ParseFloat(ord1[0], 64)
 		qa, _ := strconv.ParseFloat(ord1[1], 64)
 		sc, _ := strconv.ParseFloat(ord1[2], 64)
-		totale += (pr * qa) - ((pr * qa) * sc) 
+		totale += (pr * qa) - ((pr * qa) * sc)
 	}
-	
+
 	fmt.Println("Il totale da pagare è", totale)
 }
