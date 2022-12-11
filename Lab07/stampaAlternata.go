@@ -21,5 +21,13 @@ func main() {
 		testi = append(testi, scanner.Text())
 	}
 
-	fmt.Println(testi)
+	fmt.Print("\nRighe pari\n")
+	for i := 0; i < len(testi); i += 2 {
+		fmt.Println(testi[i])
+	}
+	fmt.Print("\nRighe dispari\n")
+	for i := 1; i < len(testi); i += 2 {
+		fmt.Println(testi[i])
+	}
+
 }
