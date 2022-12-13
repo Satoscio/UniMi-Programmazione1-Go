@@ -12,22 +12,25 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
 )
 
 func aggiornaConteggio(m map[int]int, riga string) {
-    parole := strings.Split(riga, " ")
-    for _, p := range parole {
-        
-    }
+	parole := strings.Split(riga, " ")
+	for _, p := range parole {
+		m[len(p)]++
+	}
 }
 
 func main() {
-    scanner := bufio.NewScanner(os.Stdin)
-    lungh := map[int]int{}
-
-    for scanner.Scan() {
-        aggiornaConteggio(m)
-    }
+	scanner := bufio.NewScanner(os.Stdin)
+	lungh := map[int]int{}
+	for scanner.Scan() {
+		aggiornaConteggio(lungh, scanner.Text())
+	}
+	for i, s := range lungh {
+		fmt.Printf("Ci sono %d parole di lunghezza %d\n", s, i)
+	}
 }
