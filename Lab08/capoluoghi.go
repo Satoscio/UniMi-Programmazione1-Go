@@ -43,11 +43,11 @@ func main() {
 
 	
 	sig := os.Args[1]
-	fmt.Printf("Nome: %s\n", capl[sig].nome)
-	fmt.Printf("Sigla: %s\n", capl[sig].sigla)
-	fmt.Printf("Reg.: %s\n", capl[sig].regione)
-	fmt.Printf("Abit.: %d\n", capl[sig].popolazione)
-	fmt.Printf("Area: %d\n", capl[sig].superficie)
-	fmt.Printf("Dens.: %d ab/kmq\n", capl[sig].densita)
-	fmt.Printf("Alt.: %d m slm\n", capl[sig].altitudine)
+	fmt.Printf("Nome :\t %s\n", capl[sig].nome)
+	fmt.Printf("Sigla:\t %s\n", capl[sig].sigla)
+	fmt.Printf("Reg. :\t %s\n", capl[sig].regione)
+	fmt.Printf("Abit.:\t %d\n", capl[sig].popolazione)
+	fmt.Printf("Area :\t %d\n", capl[sig].superficie)
+	fmt.Printf("Dens.:\t %d ab./km²\n", capl[sig].densita)
+	fmt.Printf("Alt. :\t %dm slm\n", capl[sig].altitudine)
 }
