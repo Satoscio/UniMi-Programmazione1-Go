@@ -9,19 +9,21 @@ import (
 	"fmt"
 	"os"
 	"reflect"
-	"sort"
+	"unicode"
 )
 
 func isAnagram(s1, s2 string) bool {
-	r1, r2 := []string{}, []string{}
+	r1, r2 := map[rune]int{}, map[rune]int{}
 	for _, r := range s1 {
-		r1 = append(r1, string(r))
+		if unicode.IsLetter(r) {
+			r1[r]++
+		}
 	}
 	for _, r := range s2 {
-		r2 = append(r2, string(r))
+		if unicode.IsLetter(r) {
+			r2[r]++
+		}
 	}
-	sort.Strings(r1)
-	sort.Strings(r2)
 	return reflect.DeepEqual(r1, r2)
 }
 
