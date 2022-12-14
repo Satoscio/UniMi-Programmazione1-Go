@@ -24,5 +24,7 @@ func main() {
 	for i, k := range testo {
 		lPos[k] = append(lPos[k], i)
 	}
-	fmt.Println(lPos)
+	for s, c := range lPos {
+		fmt.Printf("Parola: '%s' in pos: %v\n", s, c)
+	}
 }
