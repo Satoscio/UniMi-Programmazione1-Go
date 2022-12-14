@@ -9,7 +9,7 @@ import (
 )
 
 type Capoluogo struct {
-	nome, sigla, regione string
+	nome, sigla, regione                         string
 	popolazione, superficie, densita, altitudine int
 }
 
@@ -20,17 +20,16 @@ func main() {
 
 	for scanner.Scan() {
 		var row Capoluogo
-		scn := scanner.Text()
-		all := strings.Split(scn, ",")
-		als := all[:3] // parte in string
-		aln := all[3:]
-		nms := []int{} // parte in integer
+		all := strings.Split(scanner.Text(), ",") // slice di string splitatte della riga del file .csv
+		als := all[:3]                            // prendo la parte in string
+		aln := all[3:]                            // prendo la parte intera
+		nms := []int{}                            // creo una slice di interi vuota
 
-		for _, i := range aln {
+		for _, i := range aln { // popolo 'nms' convertendo i valori di 'aln' in int
 			j, _ := strconv.Atoi(i)
 			nms = append(nms, j)
 		}
-	
+		// associo a ogni campo della struct il proprio valore
 		row.nome = als[0]
 		row.sigla = als[1]
 		row.regione = als[2]
@@ -41,7 +40,6 @@ func main() {
 		capl[row.sigla] = row
 	}
 
-	
 	sig := os.Args[1]
 	fmt.Printf("Nome :\t %s\n", capl[sig].nome)
 	fmt.Printf("Sigla:\t %s\n", capl[sig].sigla)

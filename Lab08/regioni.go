@@ -19,19 +19,25 @@ import (
 )
 
 func main() {
-	//args := os.Args[1:]
+	args := os.Args[1:]
 	scanner := bufio.NewScanner(os.Stdin)
 	reg := map[string]string{}
 
+	scanner.Scan()
 	for scanner.Scan() {
 		all := strings.Split(scanner.Text(), ",")
-		reg[all[0]] = all[2]
+
+		for range all {
+			reg[all[0]] = all[2]
+		}
 	}
 
-	fmt.Println(reg)
-	/*
-		for _, r := range args {
-			fmt.Println(reg[r])
+	for z, r := range reg {
+		for i := range args {
+			if r == args[i] {
+				fmt.Println(reg[z], z)
+			}
 		}
-	*/
+	}
+
 }
