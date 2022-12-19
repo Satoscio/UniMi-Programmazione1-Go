@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -50,44 +53,63 @@ func reverseParse(c Carrello, sl []int) {
 }
 
 func main() {
+	// variabili
 	var c Carrello
 	var count, peso_max int
+	chiavi := []int{}
 	listaPesi := map[int]int{}
-	// gestione input WIP
-	sl := parseString("| | | |12|4| | | |10| | | | |4| | | | |5| |12| | | | |3| |")
-	// reverseParse(c, sl)
-	for c.pos = 0; c.pos < len(sl); c.pos++ {
+	fileName := os.Args[1]
 
-		if sl[c.pos] != 0 {
+	// gestione file e input
+	f, err := os.Open(fileName)
+	if err != nil {
+		fmt.Println("Errore di lettura del file")
+		os.Exit(1)
+	}
+	defer f.Close()
 
-			if sl[c.pos] > peso_max {
-				peso_max = sl[c.pos]
-			}
+	scanner := bufio.NewScanner(f)
 
-			if c.carico + sl[c.pos] < PMAX {
-				aggiornaStato(&c, c.pos, sl[c.pos])
-				listaPesi[sl[c.pos]]++
-				sl[c.pos] = 0
-			} else {
-				reverseParse(c, sl)
-				aggiornaStato(&c, 0, 0)
-				sl[0] += c.carico
-				c.carico = 0
-				count++
+	for scanner.Scan() {
+		ss := scanner.Text()
+		sl := parseString(ss)
+
+		for c.pos = 0; c.pos < len(sl); c.pos++ {
+			if sl[c.pos] != 0 {
+				if sl[c.pos] > peso_max {
+					peso_max = sl[c.pos]
+				}
+				if c.carico + sl[c.pos] < PMAX {
+					aggiornaStato(&c, c.pos, sl[c.pos])
+					listaPesi[sl[c.pos]]++
+					sl[c.pos] = 0
+				} else {
+					reverseParse(c, sl)
+					aggiornaStato(&c, 0, 0)
+					sl[0] += c.carico
+					c.carico = 0
+					count++
+				}
 			}
 		}
-
+	
+		reverseParse(c, sl)
+		aggiornaStato(&c, 0, 0)
+		sl[0] += c.carico
+		c.carico = 0
+		reverseParse(c, sl)
+		fmt.Printf("Numero viaggi: %d\n", count)
+		fmt.Printf("Peso max: %d\n", peso_max)
+		fmt.Println("Oggetti trovati:")
+	
+		for k := range listaPesi {
+			chiavi = append(chiavi, k)
+		}
+		sort.Ints(chiavi)
+		for _, k := range chiavi {
+			fmt.Printf("%d di peso %d\n", listaPesi[k], k)
+		}
+		fmt.Println()
 	}
 
-	reverseParse(c, sl)
-	aggiornaStato(&c, 0, 0)
-	sl[0] += c.carico
-	c.carico = 0
-	reverseParse(c, sl)
-	fmt.Printf("Numero viaggi: %d\n", count)
-	fmt.Printf("Peso max: %d\n", peso_max)
-	fmt.Println("Oggetti trovati:")
-	for k, v := range listaPesi {
-		fmt.Printf("%d di peso %d\n", k, v)
-	}
 }
