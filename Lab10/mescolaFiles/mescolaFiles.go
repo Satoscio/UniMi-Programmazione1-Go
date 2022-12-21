@@ -31,14 +31,17 @@ func main() {
 	sl1 := strings.Split(sc1.Text(), " ")
 	sc2.Scan()
 	sl2 := strings.Split(sc2.Text(), " ")
+	
 	sl3 := []string{}
 
-	if len(sl1) > len(sl2) {
-		sl3 = append(sl3, sl1[len(sl2):]...)
-		sl1 = sl1[:len(sl2)]
-	} else if len(sl1) < len(sl2) {
-		sl3 = append(sl3, sl2[len(sl1):]...)
-		sl2 = sl2[:len(sl1)]
+	if len(sl1) != len(sl2) {
+		if len(sl1) > len(sl2) {
+			sl3 = append(sl3, sl1[len(sl2):]...)
+			sl1 = sl1[:len(sl2)]
+		} else {
+			sl3 = append(sl3, sl2[len(sl1):]...)
+			sl2 = sl2[:len(sl1)]
+		}
 	}
 
 	for i, s := range sl1 {
