@@ -1,7 +1,7 @@
 /*
-    Scrivere un programma fibonacci.go che legge un intero positivo n e stampa i
-    numeri di fibonacci dal primo all'n-esimo, rappresentandoli come righe di
-    asterischi, ciascuna lunga quanto il numero da rappresentare.
+   Scrivere un programma fibonacci.go che legge un intero positivo n e stampa i
+   numeri di fibonacci dal primo all'n-esimo, rappresentandoli come righe di
+   asterischi, ciascuna lunga quanto il numero da rappresentare.
 */
 
 package main
@@ -12,17 +12,16 @@ func main() {
     var x int
     fmt.Print("Numero: ")
     fmt.Scan(&x)
+    a, b := 1, 1
 
-    y := 1
+    fmt.Print("*\n*\n")
 
-    for i := 0; i < x; i++{
-        fmt.Println(y)
-        y += y
-
+    for i := 2; i < x; i++{
+        c := a + b
+        a, b = b, c
+        for i := 0; i < c; i++ {
+            fmt.Print("*")
+        }
+        fmt.Println()
     }
-
-    y, z := 0, 1
-	for i := 0; i < n; i++ {
-		x, y = y, x+y
-	}
 }

@@ -1,14 +1,14 @@
 /*
-    Scrivere un programma disegna_v.go che legge un intero positivo n e stampa
-    una v di altezza n di asterischi.
+   Scrivere un programma disegna_v.go che legge un intero positivo n e stampa
+   una v di altezza n di asterischi.
 
-    Esempio di esecuzione:
-    dimensione v: 3
+   Esempio di esecuzione:
+   dimensione v: 3
 
-    *     *
-     *   *
-      * *
-       *
+   *     *
+    *   *
+     * *
+      *
 */
 
 package main
@@ -19,20 +19,26 @@ func main() {
     var x int
     fmt.Print("Dimensione V: ")
     fmt.Scan(&x)
-
+    x++
+    s := x + (x-3)
     for i := 0; i < x; i++ {
 
-        for h := 0; h < i; h++ {
+        for i1 := 0; i1 < i; i1++ {
             fmt.Print(" ")
         }
 
         fmt.Print("*")
 
-        for h := 0; h < x-2; h++ {
+        for i2 := 0; i2 < s; i2++ {
             fmt.Print(" ")
         }
+        s -= 2
 
-        fmt.Println("*")
+        if i != x-1 {
+            fmt.Println("*")
+        } else {
+            fmt.Println()
+        }
 
     }
 
