@@ -14,6 +14,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -27,10 +28,18 @@ func aggiornaConteggio(m map[int]int, riga string) {
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	lungh := map[int]int{}
+	numeri := []int{}
+
 	for scanner.Scan() {
 		aggiornaConteggio(lungh, scanner.Text())
 	}
-	for i, s := range lungh {
-		fmt.Printf("Ci sono %d parole di lunghezza %d\n", s, i)
+	delete(lungh, 0)
+	for i := range lungh {
+		numeri = append(numeri, i)
+	}
+	sort.Ints(numeri)
+	
+	for _, i := range numeri {
+		fmt.Printf("Lunghezza: %d, Parole: %d\n", i, lungh[i])
 	}
 }
