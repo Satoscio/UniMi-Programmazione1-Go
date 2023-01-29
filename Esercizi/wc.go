@@ -17,22 +17,23 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		nl++
+		if line == "" {
+			continue
+		}
 		for range line {
 			nr++
 		}
 		nb += len([]byte(line))
-		
-		/* questa parte di codice mi è servita a stampare tutti i codepoint
-		fmt.Printf("[%2.f] ", float64(nl))
-		for _, r := range line {
-			fmt.Printf("%d ", r)
-		}
-		fmt.Println()
+
+		//  questa parte di codice mi è servita a stampare tutti i codepoint
+		/*
+			fmt.Printf("[%2.f] ", float64(nl))
+			for _, r := range line {
+				fmt.Printf("%d ", r)
+			}
+			fmt.Println()
 		*/
 
-		if line == "" {
-			continue
-		}
 		row := strings.Split(line, " ")
 		for _, s := range row {
 			if s == "" {
@@ -40,8 +41,9 @@ func main() {
 			}
 			nw++
 		}
-	}
 
+	}
+	nb += (nl - 1)
 	fmt.Println("byte:", nb)
 	fmt.Println("rune:", nr)
 	fmt.Println("parole:", nw)
